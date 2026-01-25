@@ -69,3 +69,14 @@ def Comp_seq(old,new):
 RNA_codon_table = {}
 Read_dict()
 
+#הכנסת הקובץ לשורת סטרינג אחת
+file = open("data/human_p53_coding.txt")
+p53 = ""
+for line in file:
+  if line[0] == ">":
+    continue
+  else:
+    line = line.upper()
+    line = line.rstrip("\r\n")
+    p53 += line
+
