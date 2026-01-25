@@ -53,8 +53,19 @@ def Mutate_DNA(seq):
   mut_seq = seq[0:rand_base] + new_base + seq[rand_base+1:]
   return mut_seq
 
+#פונקציה המשווה ובודקת כמה הבדלים יש בין שני רצפים ומחזירה את מספר ההבדלים הקיימים ביניהם
+def Comp_seq(old,new):
+  diff = 0
+  for i in range(len(old)):
+    if old[i] != new[i]:
+      diff += 1
+    else:
+      continue
+  return diff
+
 ### main program ###
 
 #יצירת מילון הקודונים
 RNA_codon_table = {}
 Read_dict()
+
