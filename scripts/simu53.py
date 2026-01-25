@@ -80,3 +80,14 @@ for line in file:
     line = line.rstrip("\r\n")
     p53 += line
 
+#הוספת מוטציה רנדומלית
+m_p53 = p53
+times = 100
+for i in range(times):
+  chance = random.randint(1,100)
+  if chance <= 98:
+    m_p53 = Mutate_DNA(m_p53)
+  elif chance == 99:
+    print("subtruct")
+  elif chance == 100:
+  print("add")
