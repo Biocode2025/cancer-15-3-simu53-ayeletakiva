@@ -53,6 +53,13 @@ def Mutate_DNA(seq):
   mut_seq = seq[0:rand_base] + new_base + seq[rand_base+1:]
   return mut_seq
 
+# פונקציה המסירה נוקלאוטיד אחד עד שלושה במקום אקראי ברצף
+def Delete_DNA(seq):
+  nuc_amount = random.randrange(1,4)
+  print(nuc_amount)
+  rand_base = random.randrange(0,len(seq))
+  mut_seq = seq[0:rand_base] + seq[rand_base+nuc_amount:]
+  return mut_seq
 #פונקציה המשווה ובודקת כמה הבדלים יש בין שני רצפים ומחזירה את מספר ההבדלים הקיימים ביניהם
 def Comp_seq(old,new):
   diff = 0
@@ -90,4 +97,6 @@ for i in range(times):
   elif chance == 99:
     print("subtruct")
   elif chance == 100:
-  print("add")
+    print("add")
+
+
