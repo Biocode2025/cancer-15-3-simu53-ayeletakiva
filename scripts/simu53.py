@@ -56,7 +56,6 @@ def Mutate_DNA(seq):
 # פונקציה המסירה נוקלאוטיד אחד עד שלושה במקום אקראי ברצף
 def Delete_DNA(seq):
   nuc_amount = random.randrange(1,4)
-  print(nuc_amount)
   rand_base = random.randrange(0,len(seq))
   mut_seq = seq[0:rand_base] + seq[rand_base+nuc_amount:]
   return mut_seq
@@ -67,7 +66,6 @@ def Insert_DNA(seq):
   rand_base = random.randrange(0,len(seq))
   nuc_amount = random.randrange(1,4)
   new_bases = ""
-  print(nuc_amount)
   for i in range(nuc_amount):
     new_base = random.choice(base_list)
     new_bases += new_base
@@ -102,14 +100,34 @@ for line in file:
     p53 += line
 
 #הוספת מוטציה רנדומלית
-m_p53 = p53
-times = 100
+og_RNA = DNA_RNA_Cod(p53)
+og_prot = RNA_prot(og_RNA)
+times = 1
+tot_gen_count = 0
 for i in range(times):
-  chance = random.randint(1,100)
-  if chance <= 98:
-    m_p53 = Mutate_DNA(m_p53)
-  elif chance == 99:
-    print("subtruct")
-  elif chance == 100:
-    print("add")
-
+  m_p53 = p53
+  gen_count = 0
+  diff = 0
+  while diff == 0:
+    gen_count += 1
+    chance_mut = random.randint(1,10000)
+    if chance_mut == 10000:
+      chance = random.randint(1,100)
+      if chance <= 98:
+        m_p53 = Mutate_DNA(m_p53)
+      elif chance == 99:
+        m_p53 = Delete_DNA(m_p53)
+      elif chance == 100:
+        m_p53 = Insert_DNA(m_p53)
+      mut_RNA = DNA_RNA_Cod(m_p53)
+      mut_prot = RNA_prot(mut_RNA)
+      diff = Comp_seq(og_prot, mut_prot)
+      if diff > 0:
+        break
+    else:
+      continue
+  #print("one gen:",gen_count)
+  tot_gen_count += gen_count
+#results
+av_gen_for_mut = tot_gen_count/times
+#print("average gen",av_gen_for_mut)
