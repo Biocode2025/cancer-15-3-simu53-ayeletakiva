@@ -104,7 +104,7 @@ for line in file:
 #הוספת מוטציה רנדומלית
 og_RNA = DNA_RNA_Cod(p53)
 og_prot = RNA_prot(og_RNA)
-times = 5
+times = 1000
 tot_gen_count = 0
 for i in range(times):
   m_p53 = p53
@@ -128,7 +128,6 @@ for i in range(times):
         break
     else:
       continue
-  print("one gen:",gen_count)
   tot_gen_count += gen_count
 #results
 av_gen_for_mut = tot_gen_count/times
