@@ -101,10 +101,10 @@ for line in file:
     line = line.rstrip("\r\n")
     p53 += line
 
-'''#הוספת מוטציה רנדומלית
+#הוספת מוטציה רנדומלית
 og_RNA = DNA_RNA_Cod(p53)
 og_prot = RNA_prot(og_RNA)
-times = 2
+times = 5
 tot_gen_count = 0
 for i in range(times):
   m_p53 = p53
@@ -132,9 +132,4 @@ for i in range(times):
   tot_gen_count += gen_count
 #results
 av_gen_for_mut = tot_gen_count/times
-print("average gen",av_gen_for_mut)'''
-
-old_gen = "AYYYYY"
-new_gen = "AYYYAYY"
-d = Comp_seq(old_gen,new_gen)
-print(d)
+print("average gen",av_gen_for_mut)
