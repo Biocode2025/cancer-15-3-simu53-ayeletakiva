@@ -75,11 +75,13 @@ def Insert_DNA(seq):
 #פונקציה המשווה ובודקת כמה הבדלים יש בין שני רצפים ומחזירה את מספר ההבדלים הקיימים ביניהם
 def Comp_seq(old,new):
   diff = 0
-  for i in range(len(old)):
+  min_length = min(len(old), len(new))
+  for i in range(min_length):
     if old[i] != new[i]:
       diff += 1
     else:
       continue
+  diff += abs(len(old) - len(new))
   return diff
 
 ### main program ###
@@ -99,10 +101,10 @@ for line in file:
     line = line.rstrip("\r\n")
     p53 += line
 
-#הוספת מוטציה רנדומלית
+'''#הוספת מוטציה רנדומלית
 og_RNA = DNA_RNA_Cod(p53)
 og_prot = RNA_prot(og_RNA)
-times = 1
+times = 2
 tot_gen_count = 0
 for i in range(times):
   m_p53 = p53
@@ -126,8 +128,13 @@ for i in range(times):
         break
     else:
       continue
-  #print("one gen:",gen_count)
+  print("one gen:",gen_count)
   tot_gen_count += gen_count
 #results
 av_gen_for_mut = tot_gen_count/times
-#print("average gen",av_gen_for_mut)
+print("average gen",av_gen_for_mut)'''
+
+old_gen = "AYYYYY"
+new_gen = "AYYYAYY"
+d = Comp_seq(old_gen,new_gen)
+print(d)
